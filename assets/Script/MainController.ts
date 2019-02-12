@@ -43,6 +43,9 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     tree2: cc.Node = null;
 
+    @property(cc.Label)
+    fractionLable: cc.Label = null;
+
     @property
     text: string = 'hello';
 
@@ -53,6 +56,8 @@ export default class NewClass extends cc.Component {
     time=0;
 
     speed=0;
+
+    score=0;
 
     start () {
         let treeOffsetX=200;
@@ -86,6 +91,8 @@ export default class NewClass extends cc.Component {
         this.speed=this.speed-0.05;
         this.birdParent.y=this.birdParent.y+this.speed;
 
+        this.birdParent.rotation=this.speed*10;
+
         this.move(this.bg1);
         this.move(this.bg0);
         this.moveTree(this.tree0);
@@ -109,6 +116,8 @@ export default class NewClass extends cc.Component {
             tree.x=tree.x+960+1024;
             tree.y=300-(Math.random()*300);
             console.log(tree.y);
+            this.score=this.score+1;
+            this.fractionLable.string=this.score.toString();
         }
     }
 
