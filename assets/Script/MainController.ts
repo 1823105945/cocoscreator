@@ -91,6 +91,9 @@ export default class NewClass extends cc.Component {
         this.moveTree(this.tree0);
         this.moveTree(this.tree1);
         this.moveTree(this.tree2);
+        this.collisionClock(this.tree0,this.birdParent)
+        this.collisionClock(this.tree1,this.birdParent)
+        this.collisionClock(this.tree2,this.birdParent)
     }
     //背景移动
     move(bg){
@@ -117,14 +120,15 @@ export default class NewClass extends cc.Component {
 
     // 小鸟和管子发生碰撞
     collisionClock(tree,bird){
-        console.log("碰撞了");
+
         if (bird.x+bird.width/2<tree.x-tree.width/2){
             return;
         }else if (bird.x-bird.width/2>tree.x+tree.width/2){
             return;
-        }else if ((bird.y+bird.width/2<tree.y+tree.width/2)&&(bird.y-bird.width/2>tree.y-tree.width/2)){
-            
+        }else if ((bird.y+bird.height/2<tree.y+tree.height/2)&&(bird.y-bird.height/2>tree.y-tree.height/2)){
+            return;
         }
+        console.log("碰撞了");
     }
 }
 
